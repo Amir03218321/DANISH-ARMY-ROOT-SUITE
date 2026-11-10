@@ -299,6 +299,44 @@ delete_file() {
 }
 
 # ==========================================
+#             DELETE ALL TMP FILES
+# ==========================================
+
+delete_all_tmp_files() {
+    echo
+    echo -e "${RED}WARNING: ALL TMP FILES WILL BE DELETED!${RESET}"
+    echo -e "${YELLOW}LOCATION: $TMP_DIR${RESET}"
+    echo
+
+    refresh_files
+
+    local total="${#FILES[@]}"
+
+    if [ "$total" -eq 0 ]; then
+        echo -e "${YELLOW}NO FILES FOUND!${RESET}"
+        return
+    fi
+
+    echo -e "${CYAN}TOTAL FILES FOUND: $total${RESET}"
+    echo
+    read -r -p "TYPE DELETE ALL TO CONFIRM: " confirm
+
+    if [ "$confirm" != "DELETE ALL" ]; then
+        echo -e "${YELLOW}DELETE CANCELLED!${RESET}"
+        return
+    fi
+
+    if su -c "find '$TMP_DIR' -maxdepth 1 -type f -delete"; then
+        SELECTED=""
+        refresh_files
+        echo
+        echo -e "${GREEN}ALL TMP FILES DELETED SUCCESSFULLY!${RESET}"
+    else
+        echo -e "${RED}DELETE FAILED!${RESET}"
+    fi
+}
+
+# ==========================================
 #             FILE CONTROL PANEL
 # ==========================================
 
