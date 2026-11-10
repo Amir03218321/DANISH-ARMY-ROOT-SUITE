@@ -16,7 +16,7 @@ TMP_DIR="/data/local/tmp"
 DEST="/data/local/tmp/danish.sh"
 TEMP="$HOME/danish-download.tmp"
 
-URL="https://raw.githubusercontent.com/freefire6872349325-bit/DANISH-ARMY/47ea07c9affe19b5be204dc2dab8f35fdc077db9/danish.sh"
+URL="https://raw.githubusercontent.com/Amir03218321/DANISH-ARMY-PANEL/e1685e0fb1befb6923a3125ca196c7a66c309dec/danish.sh"
 CHANNEL="https://whatsapp.com/channel/0029Vb9KKE9EQIas4fPYVG1c"
 
 TERMUX_BASH="/data/data/com.termux/files/usr/bin/bash"
