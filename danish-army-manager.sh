@@ -16,7 +16,7 @@ TMP_DIR="/data/local/tmp"
 DEST="/data/local/tmp/danish.sh"
 TEMP="$HOME/danish-download.tmp"
 
-URL="https://raw.githubusercontent.com/Amir03218321/DANISH-ARMY-PANEL/e1685e0fb1befb6923a3125ca196c7a66c309dec/danish.sh"
+URL="https://raw.githubusercontent.com/freefire6872349325-bit/DANISH-ARMY/47ea07c9affe19b5be204dc2dab8f35fdc077db9/danish.sh"
 CHANNEL="https://whatsapp.com/channel/0029Vb9KKE9EQIas4fPYVG1c"
 
 TERMUX_BASH="/data/data/com.termux/files/usr/bin/bash"
@@ -295,44 +295,6 @@ delete_file() {
         fi
     else
         echo -e "${YELLOW}DELETE CANCELLED!${RESET}"
-    fi
-}
-
-# ==========================================
-#             DELETE ALL TMP FILES
-# ==========================================
-
-delete_all_tmp_files() {
-    echo
-    echo -e "${RED}WARNING: ALL TMP FILES WILL BE DELETED!${RESET}"
-    echo -e "${YELLOW}LOCATION: $TMP_DIR${RESET}"
-    echo
-
-    refresh_files
-
-    local total="${#FILES[@]}"
-
-    if [ "$total" -eq 0 ]; then
-        echo -e "${YELLOW}NO FILES FOUND!${RESET}"
-        return
-    fi
-
-    echo -e "${CYAN}TOTAL FILES FOUND: $total${RESET}"
-    echo
-    read -r -p "TYPE DELETE ALL TO CONFIRM: " confirm
-
-    if [ "$confirm" != "DELETE ALL" ]; then
-        echo -e "${YELLOW}DELETE CANCELLED!${RESET}"
-        return
-    fi
-
-    if su -c "find '$TMP_DIR' -maxdepth 1 -type f -delete"; then
-        SELECTED=""
-        refresh_files
-        echo
-        echo -e "${GREEN}ALL TMP FILES DELETED SUCCESSFULLY!${RESET}"
-    else
-        echo -e "${RED}DELETE FAILED!${RESET}"
     fi
 }
 
